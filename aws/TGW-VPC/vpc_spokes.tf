@@ -20,7 +20,7 @@ module "spoke2" {
   pemkey                  = "${var.aws_key}"
   serverip                = "${var.spoke2_server}"
   server2ip               = "${var.spoke2_server2}"
-  servername              = "spoke2-server"
+  servername              = "spoke2-server1"
   server2name             = "spoke2-server2"
   vpc_spoke_cidr          = "${var.spoke2_cidr}"
   vpc_spoke_subnet_cidr   = "${var.spoke2_subnet}"

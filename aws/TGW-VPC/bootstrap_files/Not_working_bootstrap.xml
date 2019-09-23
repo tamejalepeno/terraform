@@ -9,7 +9,7 @@
             <superuser>yes</superuser>
           </role-based>
         </permissions>
-        <public-key>c3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCQVFESDNMbG9iZlVkT2VNVks0eVJwQmpRYUs0QUpPUTNYWWpaMjIvUFlONUVpVDF6TlVMYnd3NUhRVWV1Rk5qRHBiVnFNOXZSeENrUXFldTdUQzBCOWVVa1g0d2dLY3g1L0NkUWc2WTJTWlJtZmJWbEdseER4bjBlcDlOYWYwWkZzUkVvN0xuWXZvNmxFTlZlQ2cvcGNvVzNERzVySkJDSytzYUI0cFN5NGJjYVJiSmZwM3c4N0JXamExdlR1eGtqaHZncXNuVlM1eXVPWGRLSENtTU9CN2NBbUV2QkxvVFQ3NEdkNEYzYkNKZnVsT2c1TVk4M2Zzc3JDaG9ZTVVkeTFnQUExOSswVnFGbm5lcXo4UTduMW15bGNNb1krUGJxekJUREVIYU5CNW4vSVpCLzVMdDExTGFyU2xRYWRydWNHUmVEcmtPZDlBTGYvYlN3ZktBZnBvaXggQVdTLU9oaW8tS2V5</public-key>
+        <public-key>c3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCQVFDRVVsM1Uvb1RYTG5odkxUWTJnSi9GTkdWMWZsSWhPanllTW5mZVQ4RjVoNTBCS052YytPVE5nN3NCOEI0OG1haVZiTHJaS0VXck9aaG40MENGbVZhdGJac0Z1UHhueDdSQ1FhM2hjT1YrUlEwY3JxVWd0b2FNSHVBcEY5L2FrSFltc2p6WkdSSi9WRkg0eThDNDF3eTM0MHRJVTJXZFdPSldhMTAxelhiaCtjQkI5b3FYckxOTzkzcEF2ZGYwVWpCZkNEeUdtbW9oNlZlSTBDZGdZdFpCR3A5UndzODQwK0tiZE9MeFU0T0VWRmVPTDE0cjFTYWdOTE81RS82OTdoMHF3RXR5cEE3UU9LM2lHb05xbUtwTjZ3Z2VsL0dkbXVFVFg5S2xBdmhBYis2WU14ZjNQcG9STkZwMVY3Tms0K2JuOWs5ZVVBd1BIMmlaZzY5NmRSQXYgY2JvbGxpbmdlcjcta3AtMWE=</public-key>
       </entry>
       <entry name="fwadmin">
         <permissions>
@@ -17,7 +17,7 @@
             <superuser>yes</superuser>
           </role-based>
         </permissions>
-        <phash>$1$kouigbds$mrNbt/msQehCS55jxNnYa.</phash>
+        <phash>$1$aljwjsru$ZIQ1DURHk0wBmwWTajdFu/</phash>
       </entry>
     </users>
   </mgt-config>
@@ -427,17 +427,17 @@
               <ip>
                 <static-route>
                   <entry name="default">
-                    <nexthop>
-                      <ip-address>10.128.150.1</ip-address>
-                    </nexthop>
-                    <bfd>
-                      <profile>None</profile>
-                    </bfd>
                     <path-monitor>
                       <enable>no</enable>
                       <failure-condition>any</failure-condition>
                       <hold-time>2</hold-time>
                     </path-monitor>
+                    <nexthop>
+                      <ip-address>10.128.151.1</ip-address>
+                    </nexthop>
+                    <bfd>
+                      <profile>None</profile>
+                    </bfd>
                     <interface>ethernet1/1</interface>
                     <metric>10</metric>
                     <destination>0.0.0.0/0</destination>
@@ -452,7 +452,7 @@
                       <hold-time>2</hold-time>
                     </path-monitor>
                     <nexthop>
-                      <ip-address>10.128.150.65</ip-address>
+                      <ip-address>10.128.151.65</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
@@ -479,8 +479,8 @@
             <dhcp-client>
               <send-hostname>yes</send-hostname>
               <send-client-id>yes</send-client-id>
-              <accept-dhcp-hostname>no</accept-dhcp-hostname>
-              <accept-dhcp-domain>no</accept-dhcp-domain>
+              <accept-dhcp-hostname>yes</accept-dhcp-hostname>
+              <accept-dhcp-domain>yes</accept-dhcp-domain>
             </dhcp-client>
           </type>
           <update-server>updates.paloaltonetworks.com</update-server>
@@ -500,7 +500,7 @@
             <disable-telnet>yes</disable-telnet>
             <disable-http>yes</disable-http>
           </service>
-          <hostname>FW-1</hostname>
+          <hostname>FW-2</hostname>
         </system>
         <setting>
           <config>
@@ -509,7 +509,7 @@
           <management>
             <hostname-type-in-syslog>FQDN</hostname-type-in-syslog>
             <initcfg>
-              <public-key>c3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCQVFESDNMbG9iZlVkT2VNVks0eVJwQmpRYUs0QUpPUTNYWWpaMjIvUFlONUVpVDF6TlVMYnd3NUhRVWV1Rk5qRHBiVnFNOXZSeENrUXFldTdUQzBCOWVVa1g0d2dLY3g1L0NkUWc2WTJTWlJtZmJWbEdseER4bjBlcDlOYWYwWkZzUkVvN0xuWXZvNmxFTlZlQ2cvcGNvVzNERzVySkJDSytzYUI0cFN5NGJjYVJiSmZwM3c4N0JXamExdlR1eGtqaHZncXNuVlM1eXVPWGRLSENtTU9CN2NBbUV2QkxvVFQ3NEdkNEYzYkNKZnVsT2c1TVk4M2Zzc3JDaG9ZTVVkeTFnQUExOSswVnFGbm5lcXo4UTduMW15bGNNb1krUGJxekJUREVIYU5CNW4vSVpCLzVMdDExTGFyU2xRYWRydWNHUmVEcmtPZDlBTGYvYlN3ZktBZnBvaXggQVdTLU9oaW8tS2V5</public-key>
+              <public-key>c3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCQVFDRVVsM1Uvb1RYTG5odkxUWTJnSi9GTkdWMWZsSWhPanllTW5mZVQ4RjVoNTBCS052YytPVE5nN3NCOEI0OG1haVZiTHJaS0VXck9aaG40MENGbVZhdGJac0Z1UHhueDdSQ1FhM2hjT1YrUlEwY3JxVWd0b2FNSHVBcEY5L2FrSFltc2p6WkdSSi9WRkg0eThDNDF3eTM0MHRJVTJXZFdPSldhMTAxelhiaCtjQkI5b3FYckxOTzkzcEF2ZGYwVWpCZkNEeUdtbW9oNlZlSTBDZGdZdFpCR3A5UndzODQwK0tiZE9MeFU0T0VWRmVPTDE0cjFTYWdOTE81RS82OTdoMHF3RXR5cEE3UU9LM2lHb05xbUtwTjZ3Z2VsL0dkbXVFVFg5S2xBdmhBYis2WU14ZjNQcG9STkZwMVY3Tms0K2JuOWs5ZVVBd1BIMmlaZzY5NmRSQXYgY2JvbGxpbmdlcjcta3AtMWE=</public-key>
               <type>
                 <dhcp-client>
                   <send-hostname>yes</send-hostname>
@@ -518,7 +518,7 @@
                   <accept-dhcp-domain>yes</accept-dhcp-domain>
                 </dhcp-client>
               </type>
-              <hostname>FW-1</hostname>
+              <hostname>FW-2</hostname>
               <op-command-modes>mgmt-interface-swap</op-command-modes>
             </initcfg>
           </management>
@@ -555,36 +555,6 @@
                 </tcp>
               </protocol>
             </entry>
-            <entry name="tcp-2001">
-              <protocol>
-                <tcp>
-                  <port>2001</port>
-                  <override>
-                    <no/>
-                  </override>
-                </tcp>
-              </protocol>
-            </entry>
-            <entry name="tcp-1002">
-              <protocol>
-                <tcp>
-                  <port>1002</port>
-                  <override>
-                    <no/>
-                  </override>
-                </tcp>
-              </protocol>
-            </entry>
-            <entry name="tcp-2002">
-              <protocol>
-                <tcp>
-                  <port>2002</port>
-                  <override>
-                    <no/>
-                  </override>
-                </tcp>
-              </protocol>
-            </entry>
           </service>
           <service-group/>
           <schedule/>
@@ -615,15 +585,11 @@
                   </application>
                   <service>
                     <member>tcp-1001</member>
-                    <member>tcp-1002</member>
-                    <member>tcp-2001</member>
-                    <member>tcp-2002</member>
                   </service>
                   <hip-profiles>
                     <member>any</member>
                   </hip-profiles>
                   <action>allow</action>
-                  <log-start>yes</log-start>
                 </entry>
                 <entry name="EW">
                   <to>
@@ -725,7 +691,7 @@
                     <member>any</member>
                   </source>
                   <destination>
-                    <member>10.128.150.45</member>
+                    <member>10.128.150.8</member>
                   </destination>
                   <service>tcp-1001</service>
                   <source-translation>
@@ -738,85 +704,6 @@
                   <destination-translation>
                     <translated-port>22</translated-port>
                     <translated-address>10.128.148.45</translated-address>
-                  </destination-translation>
-                  <to-interface>ethernet1/1</to-interface>
-                </entry>
-                <entry name="NAT_IN_SPOKE1-2">
-                  <to>
-                    <member>untrust</member>
-                  </to>
-                  <from>
-                    <member>untrust</member>
-                  </from>
-                  <source>
-                    <member>any</member>
-                  </source>
-                  <destination>
-                    <member>10.128.150.8</member>
-                  </destination>
-                  <service>tcp-1002</service>
-                  <source-translation>
-                    <dynamic-ip-and-port>
-                      <interface-address>
-                        <interface>ethernet1/2</interface>
-                      </interface-address>
-                    </dynamic-ip-and-port>
-                  </source-translation>
-                  <destination-translation>
-                    <translated-port>22</translated-port>
-                    <translated-address>10.128.148.95</translated-address>
-                  </destination-translation>
-                </entry>
-                <entry name="NAT_IN_SPOKE2-1">
-                  <to>
-                    <member>untrust</member>
-                  </to>
-                  <from>
-                    <member>untrust</member>
-                  </from>
-                  <source>
-                    <member>any</member>
-                  </source>
-                  <destination>
-                    <member>10.128.151.25</member>
-                  </destination>
-                  <service>tcp-2001</service>
-                  <source-translation>
-                    <dynamic-ip-and-port>
-                      <interface-address>
-                        <interface>ethernet1/2</interface>
-                      </interface-address>
-                    </dynamic-ip-and-port>
-                  </source-translation>
-                  <destination-translation>
-                    <translated-port>22</translated-port>
-                    <translated-address>10.128.149.45</translated-address>
-                  </destination-translation>
-                </entry>
-                <entry name="NAT_IN_SPOKE2-2">
-                  <to>
-                    <member>untrust</member>
-                  </to>
-                  <from>
-                    <member>untrust</member>
-                  </from>
-                  <source>
-                    <member>any</member>
-                  </source>
-                  <destination>
-                    <member>10.128.150.45</member>
-                  </destination>
-                  <service>tcp-2002</service>
-                  <source-translation>
-                    <dynamic-ip-and-port>
-                      <interface-address>
-                        <interface>ethernet1/2</interface>
-                      </interface-address>
-                    </dynamic-ip-and-port>
-                  </source-translation>
-                  <destination-translation>
-                    <translated-port>22</translated-port>
-                    <translated-address>10.128.149.95</translated-address>
                   </destination-translation>
                 </entry>
                 <entry name="EW">

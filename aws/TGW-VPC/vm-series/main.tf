@@ -76,6 +76,9 @@ resource "aws_network_interface" "eni-management" {
 
   tags {
     Name = "eni_${var.name}_management"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -87,6 +90,9 @@ resource "aws_network_interface" "eni-trust" {
 
   tags {
     Name = "eni_${var.name}_trust"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -100,6 +106,9 @@ resource "aws_eip" "eip-management" {
 
   tags {
     Name = "eip_${var.name}_management"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -111,6 +120,9 @@ resource "aws_network_interface" "eni-untrust" {
 
   tags {
     Name = "eni_${var.name}_untrust"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -120,6 +132,9 @@ resource "aws_eip" "eip-untrust" {
 
   tags {
     Name = "eip_${var.name}_untrust"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -153,6 +168,10 @@ resource "aws_instance" "instance-ngfw" {
 
   tags {
     Name = "${var.name}"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
+    Purpose   = "FW"
   }
 }
 

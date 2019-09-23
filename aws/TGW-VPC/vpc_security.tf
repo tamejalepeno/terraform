@@ -5,6 +5,9 @@ resource "aws_vpc" "vpc_security" {
 
   tags {
     Name = "vpc_security"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -15,6 +18,9 @@ resource "aws_subnet" "vpc_security_public_1" {
 
   tags {
     Name = "vpc_security_public_1"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -25,6 +31,9 @@ resource "aws_subnet" "vpc_security_public_2" {
 
   tags {
     Name = "vpc_security_public_2"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -35,6 +44,9 @@ resource "aws_subnet" "vpc_security_private_1" {
 
   tags {
     Name = "vpc_security_private_1"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -45,6 +57,9 @@ resource "aws_subnet" "vpc_security_private_2" {
 
   tags {
     Name = "vpc_security_private_2"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -55,6 +70,9 @@ resource "aws_subnet" "vpc_security_tgw_1" {
 
   tags {
     Name = "vpc_security_tgw_1"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -65,6 +83,9 @@ resource "aws_subnet" "vpc_security_tgw_2" {
 
   tags {
     Name = "vpc_security_tgw_2"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -73,6 +94,9 @@ resource "aws_route_table" "vpc_security_tgw_1" {
 
   tags {
     Name = "tgw_1"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -81,6 +105,9 @@ resource "aws_route_table" "vpc_security_tgw_2" {
 
   tags {
     Name = "tgw_2"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -89,6 +116,9 @@ resource "aws_route_table" "vpc_security_private_1" {
 
   tags {
     Name = "private_1"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -97,6 +127,9 @@ resource "aws_route_table" "vpc_security_private_2" {
 
   tags {
     Name = "private_2"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -161,6 +194,9 @@ resource "aws_internet_gateway" "vpc_security_igw" {
 
   tags {
     Name = "vpc_securty_igw"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -174,6 +210,12 @@ resource "aws_security_group" "allow_all" {
   name        = "allow_all"
   description = "Allow all inbound traffic"
   vpc_id      = "${aws_vpc.vpc_security.id}"
+
+  tags {
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
+  }
 }
 
 resource "aws_security_group_rule" "allow_all_ingress" {
@@ -200,6 +242,12 @@ resource "aws_security_group" "allow_https_ssh" {
   name        = "allow_https_ssh"
   description = "Allow HTTPS and SSH inbound traffic"
   vpc_id      = "${aws_vpc.vpc_security.id}"
+
+  tags {
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
+  }
 }
 
 resource "aws_security_group_rule" "allow_ssh_ingress" {

@@ -47,6 +47,9 @@ resource "aws_vpc" "vpc_spoke" {
 
   tags {
     Name = "vpc_spoke_${var.vpc_spoke_cidr}"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -59,6 +62,9 @@ resource "aws_subnet" "primary" {
 
   tags {
     Name = "vpc_spokeA_${var.vpc_spoke_subnet_cidr}"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -69,6 +75,9 @@ resource "aws_subnet" "secondary" {
 
   tags {
     Name = "vpc_spokeB_${var.vpc_spoke_subnet2_cidr}"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -76,6 +85,12 @@ resource "aws_security_group" "server_sg" {
   name        = "server_sg"
   description = "Allow select inbound traffic"
   vpc_id      = "${aws_vpc.vpc_spoke.id}"
+
+  tags {
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
+  }
 }
 
 resource "aws_security_group_rule" "allow_server_sg_ingress" {
@@ -125,6 +140,9 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_spoke_attachment" {
 
   tags {
     Name = "tgw_attachment_spoke_${var.vpc_spoke_cidr}"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -162,9 +180,14 @@ resource "aws_instance" "web" {
   subnet_id       = "${aws_subnet.primary.id}"
   private_ip      = "${var.serverip}"
   security_groups = ["${aws_security_group.server_sg.id}"]
-
+  user_data = "${file("vpc_spoke/web.conf")}"
+  
   tags = {
     Name = "${var.servername}"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
+    Purpose   = "WEB"
   }
 }
 
@@ -175,9 +198,15 @@ resource "aws_instance" "web2" {
   subnet_id       = "${aws_subnet.secondary.id}"
   private_ip      = "${var.server2ip}"
   security_groups = ["${aws_security_group.server_sg.id}"]
+  user_data                      = "${file("vpc_spoke/dba.conf")}"
+  associate_public_ip_address    = "false"
 
   tags = {
     Name = "${var.server2name}"
+    POC  = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
+    Purpose   = "WEB"
   }
 }
 
