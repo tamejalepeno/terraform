@@ -1,52 +1,70 @@
 resource "aws_vpc" "vpc" {
-  cidr_block       = "${var.vpc_cidr}"
-  enable_dns_support = true
+  cidr_block           = "${var.vpc_cidr}"
+  enable_dns_support   = true
   enable_dns_hostnames = true
   tags {
-    Name = "${var.tag_name_prefix}-vpc"
+    Name      = "${var.tag_name_prefix}-vpc"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = "${aws_vpc.vpc.id}"
   tags {
-    Name = "${var.tag_name_prefix}-vpc"
+    Name      = "${var.tag_name_prefix}-vpc"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
 resource "aws_subnet" "public_subnet" {
-  vpc_id = "${aws_vpc.vpc.id}"
-  cidr_block = "${var.public_subnet_cidr}"
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "${var.public_subnet_cidr}"
   availability_zone = "${var.availability_zone}"
   tags {
-    Name = "${var.tag_name_prefix}-public-subnet"
+    Name      = "${var.tag_name_prefix}-public-subnet"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
 resource "aws_subnet" "private_subnet" {
-  vpc_id = "${aws_vpc.vpc.id}"
-  cidr_block = "${var.private_subnet_cidr}"
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "${var.private_subnet_cidr}"
   availability_zone = "${var.availability_zone}"
   tags {
-    Name = "${var.tag_name_prefix}-private-subnet"
+    Name      = "${var.tag_name_prefix}-private-subnet"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
 resource "aws_subnet" "hasync_subnet" {
-  vpc_id = "${aws_vpc.vpc.id}"
-  cidr_block = "${var.hasync_subnet_cidr}"
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "${var.hasync_subnet_cidr}"
   availability_zone = "${var.availability_zone}"
   tags {
-    Name = "${var.tag_name_prefix}-hasync-subnet"
+    Name      = "${var.tag_name_prefix}-hasync-subnet"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
 resource "aws_subnet" "hamgmt_subnet" {
-  vpc_id = "${aws_vpc.vpc.id}"
-  cidr_block = "${var.hamgmt_subnet_cidr}"
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "${var.hamgmt_subnet_cidr}"
   availability_zone = "${var.availability_zone}"
   tags {
-    Name = "${var.tag_name_prefix}-hamgmt-subnet"
+    Name      = "${var.tag_name_prefix}-hamgmt-subnet"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -54,84 +72,102 @@ resource "aws_route_table" "public_rt" {
   vpc_id = "${aws_vpc.vpc.id}"
   route {
     cidr_block = "0.0.0.0/0"
-	gateway_id = "${aws_internet_gateway.igw.id}"
+    gateway_id = "${aws_internet_gateway.igw.id}"
   }
   tags {
-    Name = "${var.tag_name_prefix}-public-rt"
+    Name      = "${var.tag_name_prefix}-public-rt"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
 resource "aws_route_table" "private_rt" {
   vpc_id = "${aws_vpc.vpc.id}"
   tags {
-    Name = "${var.tag_name_prefix}-private-rt"
+    Name      = "${var.tag_name_prefix}-private-rt"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
 resource "aws_route_table_association" "public_rt_association1" {
-  subnet_id = "${aws_subnet.public_subnet.id}"
+  subnet_id      = "${aws_subnet.public_subnet.id}"
   route_table_id = "${aws_route_table.public_rt.id}"
 }
 
 resource "aws_route_table_association" "public_rt_association2" {
-  subnet_id = "${aws_subnet.hamgmt_subnet.id}"
+  subnet_id      = "${aws_subnet.hamgmt_subnet.id}"
   route_table_id = "${aws_route_table.public_rt.id}"
 }
 
 resource "aws_route_table_association" "private_rt_association1" {
-  subnet_id = "${aws_subnet.private_subnet.id}"
+  subnet_id      = "${aws_subnet.private_subnet.id}"
   route_table_id = "${aws_route_table.private_rt.id}"
 }
 
 #######    Availability Zone 2
 
 resource "aws_subnet" "public_subnet_az2" {
-  vpc_id = "${aws_vpc.vpc.id}"
-  cidr_block = "${var.public_subnet_cidr_az2}"
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "${var.public_subnet_cidr_az2}"
   availability_zone = "${var.availability_zone2}"
   tags {
-    Name = "${var.tag_name_prefix}-public-subnet2"
+    Name      = "${var.tag_name_prefix}-public-subnet2"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
 resource "aws_subnet" "private_subnet_az2" {
-  vpc_id = "${aws_vpc.vpc.id}"
-  cidr_block = "${var.private_subnet_cidr_az2}"
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "${var.private_subnet_cidr_az2}"
   availability_zone = "${var.availability_zone2}"
   tags {
-    Name = "${var.tag_name_prefix}-private-subnet2"
+    Name      = "${var.tag_name_prefix}-private-subnet2"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
 resource "aws_subnet" "hasync_subnet_az2" {
-  vpc_id = "${aws_vpc.vpc.id}"
-  cidr_block = "${var.hasync_subnet_cidr_az2}"
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "${var.hasync_subnet_cidr_az2}"
   availability_zone = "${var.availability_zone2}"
   tags {
-    Name = "${var.tag_name_prefix}-hasync-subnet2"
+    Name      = "${var.tag_name_prefix}-hasync-subnet2"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
 resource "aws_subnet" "hamgmt_subnet_az2" {
-  vpc_id = "${aws_vpc.vpc.id}"
-  cidr_block = "${var.hamgmt_subnet_cidr_az2}"
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "${var.hamgmt_subnet_cidr_az2}"
   availability_zone = "${var.availability_zone2}"
   tags {
-    Name = "${var.tag_name_prefix}-hamgmt-subnet2"
+    Name      = "${var.tag_name_prefix}-hamgmt-subnet2"
+    POC       = "Fortinet"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
 resource "aws_route_table_association" "public_rt_association3" {
- subnet_id = "${aws_subnet.public_subnet_az2.id}"
+  subnet_id      = "${aws_subnet.public_subnet_az2.id}"
   route_table_id = "${aws_route_table.public_rt.id}"
 }
 
 resource "aws_route_table_association" "public_rt_association4" {
- subnet_id = "${aws_subnet.hamgmt_subnet_az2.id}"
+  subnet_id      = "${aws_subnet.hamgmt_subnet_az2.id}"
   route_table_id = "${aws_route_table.public_rt.id}"
 }
 
 resource "aws_route_table_association" "private_rt_association2" {
- subnet_id = "${aws_subnet.private_subnet_az2.id}"
- route_table_id = "${aws_route_table.private_rt.id}"
+  subnet_id      = "${aws_subnet.private_subnet_az2.id}"
+  route_table_id = "${aws_route_table.private_rt.id}"
 }

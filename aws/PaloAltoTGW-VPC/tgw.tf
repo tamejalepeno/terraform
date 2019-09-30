@@ -7,7 +7,10 @@ resource "aws_ec2_transit_gateway" "tgw" {
   auto_accept_shared_attachments  = "disable"
 
   tags {
-    Name = "transit_gateway"
+    Name      = "transit_gateway"
+    POC       = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -15,7 +18,10 @@ resource "aws_ec2_transit_gateway_route_table" "tgw_security" {
   transit_gateway_id = "${aws_ec2_transit_gateway.tgw.id}"
 
   tags {
-    Name = "tgw-rtb-security"
+    Name      = "tgw-rtb-security"
+    POC       = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -23,7 +29,10 @@ resource "aws_ec2_transit_gateway_route_table" "tgw_spokes" {
   transit_gateway_id = "${aws_ec2_transit_gateway.tgw.id}"
 
   tags {
-    Name = "tgw-rtb-spokes"
+    Name      = "tgw-rtb-spokes"
+    POC       = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
 
@@ -46,6 +55,9 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_security" {
   transit_gateway_default_route_table_propagation = false
 
   tags {
-    Name = "tgw_attachment_security"
+    Name      = "tgw_attachment_security"
+    POC       = "Palo Alto"
+    OwnerDept = "NS"
+    Owner     = "CGB"
   }
 }
