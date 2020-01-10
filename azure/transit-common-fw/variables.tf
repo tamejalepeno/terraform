@@ -6,27 +6,27 @@ variable location {
 }
 
 variable resource_group_name {
-  default = "transit-rg"
+  default = "PaloAltoTestRG"
 }
 
 #-----------------------------------------------------------------------------------------------------------------
 # Azure VNET variables for VM-Series
 variable vnet_name {
-  default     = "vmseries-vnet"
+  default = "PaloAltoTestVNET"
 }
 
 variable vnet_cidr {
-  default     = "10.0.0.0/16"
+  default = "10.133.48.0/22"
 }
 
 variable subnet_names {
-  type        = "list"
-  default     = ["mgmt", "untrust", "trust"]
+  type    = "list"
+  default = ["mgmt", "untrust", "trust"]
 }
 
 variable subnet_cidrs {
-  type        = "list"
-  default     = ["10.0.0.0/24", "10.0.1.0/24", "10.0.2.0/24"]
+  type    = "list"
+  default = ["10.133.48.0/24", "10.133.49.0/24", "10.133.50.0/24"]
 }
 
 #-----------------------------------------------------------------------------------------------------------------
@@ -34,15 +34,15 @@ variable subnet_cidrs {
 variable "fw_names" {
   type        = "list"
   description = "Enter names for the firewalls. For every name entered, an additional instance is created"
-  default     = ["vmseries-fw1", "vmseries-fw2"]
+  default     = ["PaloAltoTest-vmseries-fw1", "PaloAltoTest-vmseries-fw2"]
 }
 variable "fw_nsg_prefix" {
   description = "This address prefix will be able to access the firewall's mgmt interface over TCP/443 and TCP/22"
-  default     = "0.0.0.0/0"
+  default     = "143.215.0.0/16"
 }
 
 variable "fw_avset_name" {
-  default = "vmseries-avset"
+  default = "PaloAltoTest-avset"
 }
 
 variable "fw_panos" {
@@ -50,9 +50,9 @@ variable "fw_panos" {
 }
 
 variable "fw_license" {
- # default = "byol" 
- # default = "bundle1"
- # default = "bundle2"
+  # default = "byol"
+  # default = "bundle1"
+  default = "bundle2"
 }
 
 variable "fw_username" {
@@ -65,17 +65,17 @@ variable "fw_password" {
 
 variable "fw_bootstrap_storage_account" {
   description = "Azure storage account to bootstrap firewalls"
-//  default     = "my-bootstrap-storage-account"
+  default     = "paygopaloteststorage"
 }
 
 variable "fw_bootstrap_access_key" {
   description = "Access key of the bootstrap storage account"
-//  default     = "OgJsX1/dbZyN1928347981234hlisefjkhslkjhdfadNPj111wWrZzU3QVtJK4ybDqew=="
+  default     = "Ol7GrKJztzfs2u+k4ZHRQsPU1odD9mtslp+5LXTnHFgc+hFGaxesbW5HP7PFbQMzXuMAilrRjZ83k+ylma7qow=="
 }
 
 variable "fw_bootstrap_file_share" {
   description = "Storage account's file share name that contains the bootstrap directories"
-//  default     = "my-bootstrap-file-share"
+  default     = "my-bootstrap-file-share"
 }
 
 variable "fw_bootstrap_share_directory" {
@@ -91,7 +91,7 @@ variable "prefix" {
 #-----------------------------------------------------------------------------------------------------------------
 # Azure load balancer variables
 variable "public_lb_name" {
-  default = "public-lb"
+  default = "PaloAltoTestPublic-lb"
 }
 
 variable "public_lb_allowed_ports" {
@@ -100,9 +100,9 @@ variable "public_lb_allowed_ports" {
 }
 
 variable "internal_lb_name" {
-  default = "internal-lb"
+  default = "PaloAltoTestInternal-lb"
 }
 
 variable "internal_lb_address" {
-  default = "10.0.2.100"
+  default = "10.133.50.100"
 }
